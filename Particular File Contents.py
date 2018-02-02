@@ -1,11 +1,19 @@
-import glob
-path=input('Path from where to get the file data: ')
+import glob,os
+
+path=input("Path from where to get the file data ['this' for CWD]: ")
+if path=='this':
+    path=os.getcwd()
+    print('You are in {}\n'.format(path))
+elif path==os.getcwd() or path[0:-1]==os.getcwd():
+    print("You are in Current Working Directory[CWD]!\n")
+#print('You are in {}!'.format(path.rsplit('\\',1)[1]))
+
 files_list_with_path=glob.glob('{}\*.*'.format(path))
 files_list=[] #Just for printing
 
 #Extracting only the file name from the path in the list, to a new list
-for file_pos in range(0,len(files_list_with_path)):
-    files_list.append(files_list_with_path[file_pos].split('\\')[-1])
+for file in files_list_with_path:
+    files_list.append(file.split('\\')[-1])
 
 #Looking for only textual files, eliminating others [NOT_WORKING]
 '''
@@ -54,6 +62,7 @@ try:
     file_content=''.join(x for x in file_contents)
     fob.write(file_content)
     fob.close()
+    print('File Created!')
 except:
     print('Please enter numbers from 1-{}'.format(i-1))
 '''
