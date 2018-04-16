@@ -47,11 +47,12 @@ def main():
   # Flag Circle
   goto([origin[0]+screen_shift,origin[1]])
   pendown()
+  radius=int(s)+10
   tina.color('#000080')
   for _ in range(24):
-    draw_star(s,screen_shift)
-  goto([origin[0]+screen_shift,origin[1]-int(s)])
-  tina.circle(s)
+    draw_star(radius,screen_shift)
+  goto([origin[0]+screen_shift,origin[1]-int(radius)])
+  tina.circle(radius)
   penup()
   
   # Flag Bottom
