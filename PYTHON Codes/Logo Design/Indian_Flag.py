@@ -1,5 +1,4 @@
 import turtle
-import math
 tina = turtle.Turtle()
 tina.shape("arrow")
 
