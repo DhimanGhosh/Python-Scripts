@@ -81,7 +81,7 @@ def main():
   tina.begin_fill()
   pendown()
   for _ in range(2):
-    draw_rect(b*20,2)
+    draw_rect(b*14,2)
   tina.end_fill()
   penup()
   
