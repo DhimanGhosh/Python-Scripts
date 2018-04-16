@@ -8,6 +8,7 @@ l = input()
 def sima(x=0):
   length = int(l) + int(x)
   shift = length/10+length/2
+  slant = length*2*math.sqrt(2)
   
   tina.penup()
   tina.left(180)
@@ -55,7 +56,6 @@ def sima(x=0):
   tina.pendown()
   tina.forward(length*2)
   tina.right(135)
-  slant = length*2*math.sqrt(2)
   tina.forward(slant)
   tina.backward(slant/2)
   tina.right(135)
