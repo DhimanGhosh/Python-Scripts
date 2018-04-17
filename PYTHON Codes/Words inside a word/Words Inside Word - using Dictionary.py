@@ -1,7 +1,6 @@
 english_dictionary = [line.rstrip('\n') for line in open('English Dictionary.txt','r')]
 
 word = input("Word: ")
-sorted_word = sorted(word)
 
 # Character Frequency in a Word
 def char_frequency(str1):
@@ -49,6 +48,8 @@ for w in possible_dup_words_list:
         else:
             print(str(c)+': '+w)
             c+=1
+if c==1:
+    print('No Possible child word in \''+word+'\'')
 
 # QUIT
 input('Press any key to quit...')

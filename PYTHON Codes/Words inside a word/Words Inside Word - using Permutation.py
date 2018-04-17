@@ -58,6 +58,8 @@ def print_list(list1, word):
             elif w in english_dictionary:
                 print(str(c)+': '+w)
                 c+=1
+    if c==1:
+        print('No Possible child word in \''+word+'\'')
 
 def run():
     word = input('Word: ')
