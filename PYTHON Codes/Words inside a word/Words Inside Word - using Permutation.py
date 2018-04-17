@@ -64,7 +64,7 @@ def print_list(list1, word):
 def run():
     word = input('Word: ')
     word_extract(word)
-    print_list(final_list, word)
+    print_list(set(final_list), word)
 
     # QUIT
     input('Press any key to quit...')
