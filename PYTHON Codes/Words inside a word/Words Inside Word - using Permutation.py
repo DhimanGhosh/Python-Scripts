@@ -41,9 +41,8 @@ def word_extract(word):
         for i in range(len(temp_list)):
             for j in range(len(word)):
                 w = temp_list[i]
-                if temp_list[i][-1]!=word[j]:
-                    w+=word[j]
-                    concat_list.append(w)
+                w+=word[j]
+                concat_list.append(w)
         final_list.extend(concat_list)
         counter+=1
 
@@ -63,8 +62,11 @@ def print_list(list1, word):
 
 def run():
     word = input('Word: ')
-    word_extract(word)
-    print_list(set(final_list), word)
+    if word in english_dictionary:
+        word_extract(word)
+        print_list(set(final_list), word)
+    else:
+        print('Such a word itself does not exist!')
 
     # QUIT
     input('Press any key to quit...')
