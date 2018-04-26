@@ -11,7 +11,7 @@ Sheet Format
 #HUNT
 for i in range(len(hunt)):
     hunt[i]=''.join(hunt[i].split(' '))
-    hunt[i]=''.join(hunt[i].split('-'))
+    #hunt[i]=''.join(hunt[i].split('-'))
 
 #MCC
 '''for i in range(len(mcc)):

@@ -1,6 +1,6 @@
 '''
 *****Telephone Directory*****
-A Simple Application (using Trie)
+A Simple Console Application (using Trie)
 
 New Feature/s:
 1. Can Search with some initial characters
@@ -118,7 +118,7 @@ class Tel_Dir(object):
         else:
             print("\'"+name+"\' does not exist!")
 
-
+# Driver
 def driver():
     t = Tel_Dir()
 
@@ -157,4 +157,3 @@ def driver():
 
 if __name__ == '__main__':
     driver()
-    #os.remove('tel_dir.txt')

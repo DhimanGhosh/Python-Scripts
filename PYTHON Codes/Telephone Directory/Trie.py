@@ -33,3 +33,6 @@ class Trie():
             pCrawl = pCrawl.children[index]
         return pCrawl != None and pCrawl.isEndOfWord
 
+    def search_by_chrs(self,str1):
+        pass
+

@@ -1,6 +1,6 @@
 '''
 *****Telephone Directory*****
-A Simple Application (using List)
+A Simple Console Application (using List)
 
 New Feature/s:
 1. Store Telephone Numbers in a text file

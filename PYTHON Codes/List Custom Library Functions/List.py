@@ -110,4 +110,15 @@ class List:
         for _ in self.__a:
             c+=1
         return c
-    
+
+    def inside(self,list1):
+        flag = False
+        for item in list1:
+            if self.__a == item:
+                flag = True
+                break
+        return flag
+
+    def print_list(self):
+        for l in self.__a:
+            print(l)
