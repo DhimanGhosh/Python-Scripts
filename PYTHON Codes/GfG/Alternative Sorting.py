@@ -25,14 +25,14 @@ def alt_sort(a):
             p+=1
 
     for i in range(len(a)-1, 0, -1):
-        if i%2 != 0 and arr[i]==0:
+        if arr[i]==0:
             arr[i] = a[p]
             p+=1
     
     return arr
 
 def run():
-    arr = [1, 6, 9, 4, 3, 7, 8, 2]
+    arr = [-4, 1, 2, -9, 4, 5, 6, 0]
     print(arr)
     print(alt_sort(arr))
     #print(alt_sort_lambda(arr))
