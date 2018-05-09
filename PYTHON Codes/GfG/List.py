@@ -7,6 +7,10 @@ class List:
 
     def get_a(self):
         return self.__a
+
+    def print_list(self):
+        for l in self.__a:
+            print(l)
     
     def append(self,n):
         a1=[0]*(len(self.__a)+1)
@@ -111,14 +115,16 @@ class List:
             c+=1
         return c
 
-    def inside(self,list1):
+    def inside(self, item):
         flag = False
-        for item in list1:
-            if self.__a == item:
+        for item1 in self.__a:
+            if item1 == item:
                 flag = True
                 break
         return flag
 
-    def print_list(self):
-        for l in self.__a:
-            print(l)
+    def find_num_pos(self, item):
+        for i in range(len(self.__a)):
+            if self.__a[i] == item:
+                return i
+        return None

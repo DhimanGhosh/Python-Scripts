@@ -1,0 +1,5 @@
+http://sparshv2/Pages/Home.aspx
+http://iscls2apps/EmployeeDiary/aspx/MyDetails.aspx
+https://www.facebook.com/
+https://www.youtube.com/
+https://www.wikipedia.org/

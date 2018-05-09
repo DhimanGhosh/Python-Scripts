@@ -3,14 +3,15 @@ from List import *
 mcc=[line.rstrip('\n') for line in open('mcc.txt','r')]
 hunt=[line.rstrip('\n') for line in open('hunt.txt','r')]
 os4k=[line.rstrip('\n') for line in open('os4k.txt','r')]
-l=len(hunt[0])
+l=len(hunt)
 
 '''
 Sheet Format
 '''
 #HUNT
 for i in range(len(hunt)):
-    hunt[i]=''.join(hunt[i].split(' '))
+    hunt[i]='+49972194907'+hunt[i]
+    #hunt[i]=''.join(hunt[i].split(' '))
     #hunt[i]=''.join(hunt[i].split('-'))
 
 #MCC
@@ -45,10 +46,10 @@ for num in hunt:
         c+=1
 h=List(hunt)
 print('\nTotal number matched with MCC and HUNT:',c)
-if h.total_count()-c==0:
+if h.length()-c==0:
     print('All matched!')
 else:
-    print('Total number not matched with MCC and HUNT:',h.total_count()-c)'''
+    print('Total number not matched with MCC and HUNT:',h.length()-c)'''
 
 #mcc||hunt
 c=0
@@ -62,15 +63,15 @@ printArray(dup_rem_from_list(new_num_list))
 print('Total Count:',c)
 
 h=List(hunt)
-print('\nTot. AOIT:',h.total_count())
+print('\nTot. AOIT:',h.length())
 m=List(mcc)
-print('Tot. MCC:',m.total_count())
+print('Tot. MCC:',m.length())
 print('\nTotal number of AOIT matched with MCC:',c)
-if m.total_count()-c==0:
+if m.length()-c==0:
     print('All matched!')
 else:
-    print('Total number of AOIT not matched with MCC:',h.total_count()-c)
-print('Total Remaining MCC device not found in AOIT:',m.total_count()-h.total_count())
+    print('Total number of AOIT not matched with MCC:',h.length()-c)
+print('Total Remaining MCC device not found in AOIT:',m.length()-h.length())
 
 '''
 Remaining numbers AOIT didn't matched with MCC

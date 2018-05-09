@@ -1,1 +1,1 @@
-> Exclude the use of List with Trie (Complately)
+- Exclude the use of List with Trie (Complately)
