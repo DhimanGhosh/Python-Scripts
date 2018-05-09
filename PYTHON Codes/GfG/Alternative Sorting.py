@@ -32,7 +32,7 @@ def alt_sort(a):
     return arr
 
 def run():
-    arr = [-4, 1, 2, -9, 4, 5, 6, 0]
+    arr = [0, 1, 2, 0, -1, 5, 6, 0]
     print(arr)
     print(alt_sort(arr))
     #print(alt_sort_lambda(arr))
