@@ -47,6 +47,7 @@ def part1():
     Beep(G1, 300)
     Beep(Fs1, 300)
     Beep(E1, 300)
+    Beep(D1, 300)
     Beep(B0, 700)
 
     sleep(0.05)
