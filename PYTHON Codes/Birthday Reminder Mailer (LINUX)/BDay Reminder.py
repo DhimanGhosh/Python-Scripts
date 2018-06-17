@@ -1,4 +1,5 @@
 def checkTodaysBirthdays():
+    global birthdayFile
     fileName = open(birthdayFile, 'r')
     today = time.strftime('%d%m%Y')
     flag = 0
@@ -15,7 +16,6 @@ def checkTodaysBirthdays():
                 from_mail_id = 'dgkiitcsedual@gmail.com'
                 from_mail_idPWD = 'kovarcsbmqxmtvds'
                 s.login(from_mail_id, from_mail_idPWD)
-                #msg = '\t\tHappy Birthday!\nMany Happy Returns of the Day!\nAge: ' + str(age)
                 
                 msg = MIMEMultipart()
                 msg['From'] = from_mail_id
@@ -23,12 +23,11 @@ def checkTodaysBirthdays():
                 msg['Subject'] = "Happy Birthday!"
                 body = 'Many Happy Returns of the Day!\nAge: ' + str(age)
                 msg.attach(MIMEText(body, 'plain'))
-                filename = 'birthday_wish.pdf' #Create a 'pdf' file having Happy Birthday! Wish...
-                attachment = open(os.getcwd() + '/filename', 'rb')
+                attachment = open(os.getcwd() + '/Birthday_Wish.pdf', 'rb')
                 p = MIMEBase('application', 'octet-stream')
                 p.set_payload((attachment).read())
                 encoders.encode_base64(p)
-                p.add_header('Content-Disposition', "attachment; filename= %s" % filename)
+                p.add_header('Content-Disposition', "attachment; filename= %s" % fileName)
                 msg.attach(p)
 
                 s.sendmail(from_mail_id, to_mail_id, msg.as_string())
