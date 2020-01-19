@@ -9,7 +9,7 @@
 s = 0
 for i in range(1, 6)[::-1]:
     print(' '*s, end='')
-    for j in range(0, i):
+    for j in range(i):
         print(i, end=' ')
     s += 2
     print()

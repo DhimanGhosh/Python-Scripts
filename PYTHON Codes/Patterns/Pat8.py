@@ -8,7 +8,7 @@
 
 val = 1
 for i in range(1, 6)[::-1]:
-    for j in range(1, i+1):
+    for j in range(i):
         print(val, end=' ')
     val += 1
     print()
