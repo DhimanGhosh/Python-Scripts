@@ -1,20 +1,20 @@
 class Datasets_Similarity:
     def __init__(self, ds1, ds2):
-        self.ds1 = ds1
-        self.ds2 = ds2
+        self.__ds1 = ds1
+        self.__ds2 = ds2
 
     def ds_sim(self):
-        if type(self.ds1).__name__ == type(self.ds2).__name__:
-            if isinstance(self.ds1, list):
-                return self.__list_sim(self.ds1, self.ds2)
-            elif isinstance(self.ds1, tuple):
-                return self.__tuple_sim(self.ds1, self.ds2)
-            elif isinstance(self.ds1, set):
-                return self.__set_sim(self.ds1, self.ds2)
-            elif isinstance(self.ds1, dict):
-                return self.__dict_sim(self.ds1, self.ds2)
+        if type(self.__ds1).__name__ == type(self.__ds2).__name__:
+            if isinstance(self.__ds1, list):
+                return self.__list_sim(self.__ds1, self.__ds2)
+            elif isinstance(self.__ds1, tuple):
+                return self.__tuple_sim(self.__ds1, self.__ds2)
+            elif isinstance(self.__ds1, set):
+                return self.__set_sim(self.__ds1, self.__ds2)
+            elif isinstance(self.__ds1, dict):
+                return self.__dict_sim(self.__ds1, self.__ds2)
             else:
-                if self.ds1 == self.ds2:
+                if self.__ds1 == self.__ds2:
                     return True
         return False
 
