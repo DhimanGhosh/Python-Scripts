@@ -1,82 +1,39 @@
 class Datasets_Similarity:
     def __init__(self, ds1, ds2):
-        self.ds1 = ds1
-        self.ds2 = ds2
+        self.__ds1 = ds1
+        self.__ds2 = ds2
 
     def ds_sim(self):
-        if type(self.ds1).__name__ == type(self.ds2).__name__:
-            if isinstance(self.ds1, list):
-                return self.__list_sim(self.ds1, self.ds2)
-            elif isinstance(self.ds1, tuple):
-                return self.__tuple_sim(self.ds1, self.ds2)
-            elif isinstance(self.ds1, set):
-                return self.__set_sim(self.ds1, self.ds2)
-            elif isinstance(self.ds1, dict):
-                return self.__dict_sim(self.ds1, self.ds2)
+        if type(self.__ds1).__name__ == type(self.__ds2).__name__:
+            if isinstance(self.__ds1, list) or isinstance(self.__ds1, tuple):
+                return self.__list_sim(self.__ds1, self.__ds2)
+            elif isinstance(self.__ds1, set):
+                return self.__ds1 == self.__ds2
+            elif isinstance(self.__ds1, dict):
+                return self.__dict_sim(self.__ds1, self.__ds2)
             else:
-                if self.ds1 == self.ds2:
+                if self.__ds1 == self.__ds2:
                     return True
         return False
 
+    def __val_chk(self, val1, val2): # Helper Function
+        if isinstance(val1, list) or isinstance(val2, tuple):
+            if not self.__list_sim(list(val1), list(val2)):
+                return False
+        elif isinstance(val1, dict):
+            if not self.__dict_sim(val1, val2):
+                return False
+        elif val1 != val2:
+            return False
+        return True
+
     def __list_sim(self, list1, list2):
         flag = True
-        for i in range(len(list1)):
-            if type(list1[i]).__name__ == type(list2[i]).__name__:
-                if isinstance(list1[i], list):
-                    flag = self.__list_sim(list1[i], list2[i])
+        if len(list1) == len(list2):
+            for i in range(len(list1)):
+                if type(list1[i]).__name__ == type(list2[i]).__name__:
+                    flag = self.__val_chk(list1[i], list2[i])
                     if not flag:
-                        break
-                elif isinstance(list1[i], tuple):
-                    flag = self.__tuple_sim(list1[i], list2[i])
-                    if not flag:
-                        break
-                elif isinstance(list1[i], set):
-                    flag = self.__set_sim(list1[i], list2[i])
-                    if not flag:
-                        break
-                elif isinstance(list1[i], dict):
-                    flag = self.__dict_sim(list1[i], list2[i])
-                    if not flag:
-                        break
-                elif list1[i] != list2[i]:
-                    flag = False
-                    break
-            else:
-                flag = False
-                break
-        return flag
-
-    def __tuple_sim(self, tup1, tup2):
-        list1 = list(tup1)
-        list2 = list(tup2)
-        return self.__list_sim(list1, list2)
-
-    def __set_sim(self, set1, set2):
-        return set1 == set2
-
-    def __dict_sim(self, dict1, dict2):
-        flag = True
-        if self.__set_sim(set(dict1.keys()), set(dict2.keys())):
-            for key in dict1.keys():
-                if type(dict1[key]).__name__ == type(dict2[key]).__name__:
-                    if isinstance(dict1[key], list):
-                        flag = self.__list_sim(dict1[key], dict2[key])
-                        if not flag:
-                            break
-                    elif isinstance(dict1[key], tuple):
-                        flag = self.__tuple_sim(dict1[key], dict2[key])
-                        if not flag:
-                            break
-                    elif isinstance(dict1[key], set):
-                        flag = self.__set_sim(dict1[key], dict2[key])
-                        if not flag:
-                            break
-                    elif isinstance(dict1[key], dict):
-                        flag = self.__dict_sim(dict1[key], dict2[key])
-                        if not flag:
-                            break
-                    elif dict1[key] != dict2[key]:
-                        flag = False
                         break
                 else:
                     flag = False
@@ -85,16 +42,32 @@ class Datasets_Similarity:
             flag = False
         return flag
 
-if __name__ == "__main__":
-    print()
-    print('*'*30 + " Welcome " + '*'*30)
-    print(' '*20 + "Enter your Data Sets")
-    ds1 = input('Enter 1st Dataset: ')
-    ds2 = input('Enter 2nd Dataset: ')
+    def __dict_sim(self, dict1, dict2):
+        flag = True
+        if set(dict1.keys()) == set(dict2.keys()):
+            for key in dict1.keys():
+                if type(dict1[key]).__name__ == type(dict2[key]).__name__:
+                    flag = self.__val_chk(dict1[key], dict2[key])
+                    if not flag:
+                        break
+                else:
+                    flag = False
+                    break
+        else:
+            flag = False
+        return flag
 
-    ds = Datasets_Similarity(ds1, ds2)
-    if ds.ds_sim():
-        print('\nYour Data Sets are Same')
-    else:
-        print('\nYour Data Sets are not Same')
-    print('*'*29 + " Thank You " + '*'*29)
+t1 = (1,2,'3')
+t2 = (1,2,'3')
+
+d1 = {'a' : 1, 'b' : 2}
+d2 = {'b' : 2, 'a' : 1}
+
+s1 = {5,6,5,2,7,2,1}
+s2 = {2,1,6,5,7}
+
+l1 = [1., '2', {3:3}, (4, 5), {4,4,6,7}]
+l2 = [1, '2', {3:3}, (4, 5), {4,4,6,7}]
+
+ds = Datasets_Similarity(l1, l2)
+print(ds.ds_sim())
